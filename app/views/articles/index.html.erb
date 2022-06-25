@@ -1,0 +1,9 @@
+<h1>What Is SQL Injection?</h1>
+
+<p>Almost every modern application uses a database to store data. All the users' accounts (together with their passwords) are stored in such a database. Your application will continuously talk to the database in order to read some records, save new ones, or change existing ones. Therefore, it's normal for the application to execute all kinds of SQL queries. If you, for example, open "my orders" on your favorite online shopping website, that website will contact its database to get all the orders made by your user ID in order to present them to you. So it will have to execute a SQL query similar to this one:<p>
+
+<pre><code class="language-sql">
+SELECT * FROM orders WHERE user_id = '29361'
+</code></pre>
+
+<p>Of course, from your user account, you should only be able to see your own orders and not orders from other users. If you were able to somehow force the application to change user_id in the above query, you'd be able to get the orders of other users. And that's what we call a SQL injection attack: an ability to modify the SQL query that an application is executing against the database. If you want to learn more about the attack itself, read our post, What is SQL Injection? Let's dive in to SQL injections, specifically in the case of the Rails framework.</p>
