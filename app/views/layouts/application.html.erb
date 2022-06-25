@@ -7,16 +7,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-    <main class="d-flex flex-nowrap">
+    <div class="d-flex flex-nowrap">
       <%= render partial: "layouts/sidebar" %>
 
-      <div class="p-3">
+      <main class="p-3">
         <%= yield %>
-      </div>
-    </main>
+      </main>
+    </div>
   </body>
 </html>

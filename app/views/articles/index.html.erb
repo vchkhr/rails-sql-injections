@@ -1,9 +1,26 @@
 <h1>What Is SQL Injection?</h1>
 
-<p>Almost every modern application uses a database to store data. All the users' accounts (together with their passwords) are stored in such a database. Your application will continuously talk to the database in order to read some records, save new ones, or change existing ones. Therefore, it's normal for the application to execute all kinds of SQL queries. If you, for example, open "my orders" on your favorite online shopping website, that website will contact its database to get all the orders made by your user ID in order to present them to you. So it will have to execute a SQL query similar to this one:<p>
+<p>SQL Injection is a web application attack where the attacker “injects” SQL statements that will manipulate or access application data, whether it be sensitive or public. These attacks leverage areas in web applications that ask for user input. If user inputs in an app are not sanitized properly, an attacker can use a SQL injection to gain access to the associated app datastore.<p>
 
-<pre><code class="language-sql">
-SELECT * FROM orders WHERE user_id = '29361'
-</code></pre>
+<h2>An Example SQL Injection</h2>
 
-<p>Of course, from your user account, you should only be able to see your own orders and not orders from other users. If you were able to somehow force the application to change user_id in the above query, you'd be able to get the orders of other users. And that's what we call a SQL injection attack: an ability to modify the SQL query that an application is executing against the database. If you want to learn more about the attack itself, read our post, What is SQL Injection? Let's dive in to SQL injections, specifically in the case of the Rails framework.</p>
+<p>Attackers commonly use SQL injections to infiltrate web applications through user input. This includes form fills for usernames, user IDs, first and last names, and more. If you do not sanitize these inputs before accepting them or make strong use of parameterized SQL statements, an attacker can pass SQL statements through that input that unknowingly run on your database.</p>
+
+<p>For example, say you are taking the input of a user ID in from a user. When your application fetches information about a user, the URL may look something like this:</p>
+
+<pre><code class="language-sql">SELECT * FROM users WHERE id = '42'</code></pre>
+
+
+<p>They enter their user ID, you take in their input, use it to find their information in your database, and display their data for them.</p>
+
+<p>But, consider this: instead of inputting their user ID, they input what can be interpreted as a SQL query. For example:</p>
+
+<pre><code class="language-sql">'42' OR '1'='1'</code></pre>
+
+<p>If you take their input as-is, without sanitizing, this will result in a SQL query like:</p>
+
+<pre><code class="language-sql">SELECT * FROM users WHERE id = '42' OR '1'='1';</code></pre>
+
+<p>Since 1=1 is always true, this will return every data field for all users. This is a classic example of a SQL injection.</p>
+
+<p>It’s important to note that this is the output the database is designed to give for this type of query. In this instance, the attacker is not looking to break the application you’ve made…just use what’s already available to access things they shouldn’t. When developing an application, try to consider what things might be accessible that shouldn’t be, and then implement ways to prevent that access from happening.</p>
