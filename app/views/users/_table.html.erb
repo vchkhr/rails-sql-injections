@@ -1,0 +1,13 @@
+<table class="table table-borderless">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+
+  <% users.each do |user| %>
+    <tr id="<%= dom_id user %>">
+      <td><code><%= user.id %></code></td>
+      <td><%= user.name %></td>
+    </tr>
+  <% end %>
+</table>

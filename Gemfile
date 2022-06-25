@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 # The most popular HTML, CSS, and JavaScript framework for developing responsive, mobile first projects on the web. http://getbootstrap.com
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 
+# This gem is a port of Perl's Data::Faker library that generates fake data.
+gem 'faker'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
