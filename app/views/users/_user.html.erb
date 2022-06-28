@@ -1,4 +1,13 @@
-<tr id="<%= dom_id user %>">
-  <td><code><%= user.id %></code></td>
-  <td><%= user.name %></td>
-</tr>
+<%= turbo_frame_tag :user do %>
+  <h1>Founded user</h1>
+
+  <% if user %>
+    <p>
+      <code><%= user.id %></code>
+      <%= user.name %>
+      <code><%= user.is_admin ? "Admin" : "" %></code>
+    </p>
+  <% else %>
+    <p><code>nil</p>
+  <% end %>
+<% end %>

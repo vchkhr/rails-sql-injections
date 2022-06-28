@@ -2,12 +2,14 @@
   <tr>
     <th>ID</th>
     <th>Name</th>
+    <th>Admin?</th>
   </tr>
 
   <% users.each do |user| %>
     <tr id="<%= dom_id user %>">
       <td><code><%= user.id %></code></td>
       <td><%= user.name %></td>
+      <td><code><%= user.is_admin ? "Yes" : "" %></code></td>
     </tr>
   <% end %>
 </table>
