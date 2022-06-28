@@ -1,0 +1,16 @@
+<%= turbo_frame_tag :orders do %>
+  <h1>Founded orders</h1>
+
+  <% if orders %>
+    <% orders.each do |order| %>
+      <p>
+        <code><%= order.id %></code>
+        <%= order.total %>
+      </p>
+    <% end %>
+
+  <% else %>
+    <p><code>nil</p>
+
+  <% end %>
+<% end %>

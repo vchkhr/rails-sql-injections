@@ -12,4 +12,8 @@ class ArticlesController < ApplicationController
     @user = @users.first
     @user_last = @users.last
   end
+
+  def joins
+    @orders = Order.all
+  end
 end

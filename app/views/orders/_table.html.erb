@@ -1,0 +1,13 @@
+<table class="table table-borderless">
+  <tr>
+    <th>ID</th>
+    <th>Total</th>
+  </tr>
+
+  <% orders.each do |order| %>
+    <tr id="<%= dom_id order %>">
+      <td><code><%= order.id %></code></td>
+      <td><%= order.total %></td>
+    </tr>
+  <% end %>
+</table>

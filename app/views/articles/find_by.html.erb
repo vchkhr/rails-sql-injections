@@ -32,7 +32,7 @@
 
         <%= form_with url: :find_by_user do |f| %>
           <%= f.hidden_field :id, value: "id = #{@user.id}" %>
-          <%= f.submit "Find by (id = #{@user.id})", class: "btn btn-outline-primary" %>
+          <%= f.submit "Find by (id = #{@user.id})", class: "btn btn-outline-primary mb-3" %>
         <% end %>
 
         <div class="mt-3"></div>
@@ -41,7 +41,7 @@
 
         <%= form_with url: :find_by_user do |f| %>
           <%= f.hidden_field :id, value: "is_admin = true" %>
-          <%= f.submit "Find by (is_admin = true)", class: "btn btn-outline-primary" %>
+          <%= f.submit "Find by (is_admin = true)", class: "btn btn-outline-primary mb-3" %>
         <% end %>
       </div>
 
@@ -54,7 +54,7 @@
 
         <%= form_with url: :find_by_user_sanitized do |f| %>
           <%= f.hidden_field :id, value: "#{@user.id}" %>
-          <%= f.submit "Find by (id = #{@user.id})", class: "btn btn-outline-primary" %>
+          <%= f.submit "Find by (id = #{@user.id})", class: "btn btn-outline-primary mb-3" %>
         <% end %>
 
         <div class="mt-3"></div>
@@ -63,7 +63,7 @@
 
         <%= form_with url: :find_by_user_sanitized do |f| %>
           <%= f.hidden_field :id, value: "is_admin = true" %>
-          <%= f.submit "Find by (id = \"is_admin = true\")", class: "btn btn-outline-primary" %>
+          <%= f.submit "Find by (id = \"is_admin = true\")", class: "btn btn-outline-primary mb-3" %>
         <% end %>
       </div>
     </div>
