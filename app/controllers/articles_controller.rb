@@ -16,4 +16,7 @@ class ArticlesController < ApplicationController
   def joins
     @orders = Order.all
   end
+
+  def rules
+  end
 end

@@ -1,0 +1,45 @@
+<h1>General Rules</h1>
+
+<h3 class="mt-4">String Conditions</h3>
+
+<h5 class="text-danger">DON'T</h5>
+
+<div class="do-dont-block">
+  <pre><code class="language-ruby">Post.where("category = #{params[:category]}")</code></pre>
+</div>
+
+<h5 class="text-success">DO</h5>
+
+<div class="do-dont-block">
+  <pre><code class="language-ruby">Post.where(category: params[:category])</code></pre>
+</div>
+
+<h3 class="mt-4">Array Conditions</h3>
+
+<h5 class="text-success">DO</h5>
+
+<div class="do-dont-block">
+  <pre><code class="language-ruby">Post.where("category = ?", params[:category])</code></pre>
+
+  <pre><code class="language-ruby">Post.where("category = ? AND published = ?", params[:category], true)</code></pre>
+</div>
+
+<h3 class="mt-4">Hash Conditions</h3>
+
+<h5 class="text-success">DO</h5>
+
+<div class="do-dont-block">
+  <pre><code class="language-ruby">Post.where(category: params[:category])</code></pre>
+</div>
+
+
+<h3 class="mt-4">Best Practices</h3>
+
+<h5 class="text-success">DO</h5>
+
+<ol>
+  <li>Use <b>hash conditions</b> whenver possible.</li>
+  <li>Avoid using string conditions.</li>
+  <li>Definitely avoid using string interpolation inside these conditions.</li>
+  <li>If you need to pass a variable or any user input to a query, use <b>array conditions</b>.</li>
+</ol>
