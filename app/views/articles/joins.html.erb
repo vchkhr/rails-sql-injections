@@ -32,7 +32,7 @@
 
         <%= form_with url: :joins_order do |f| %>
           <%= f.hidden_field :table, value: "INNER JOIN users ON users.id = orders.user_id" %>
-          <%= f.submit "Joins (:user)", class: "btn btn-outline-primary mb-3" %>
+          <%= f.submit "Joins (INNER JOIN users ON users.id = orders.user_id)", class: "btn btn-outline-primary mb-3" %>
         <% end %>
 
         <pre><code class="language-sql">SELECT "orders".* FROM "orders" -- WHERE (total > 1000)</code></pre>
@@ -48,14 +48,16 @@
       <h5 class="text-success">DO</h5>
 
       <div class="do-dont-block">
-        <pre><code class="language-ruby">Order.joins(params[:table]).where("total > 1000").all</code></pre>
+        <pre><code class="language-ruby">Order.joins("INNER JOIN users ON users
+        .#{ActiveRecord::Base.connection.quote_column_name(params[:column])} = orders.user_id")
+        .where("total > 1000").all</code></pre>
 
         <%= form_with url: :joins_sanitized_order do |f| %>
           <%= f.hidden_field :column, value: "id" %>
-          <%= f.submit "Joins (:user)", class: "btn btn-outline-primary mb-3" %>
+          <%= f.submit "Joins (id)", class: "btn btn-outline-primary mb-3" %>
         <% end %>
 
-        <pre><code class="language-sql">SELECT "orders".* FROM "orders" -- WHERE (total > 1000)</code></pre>
+        <pre><code class="language-sql">SELECT "orders".* FROM "orders" INNER JOIN users ON users."--" = orders.user_id WHERE (total > 1000)</code></pre>
 
         <%= form_with url: :joins_sanitized_order do |f| %>
           <%= f.hidden_field :column, value: "--" %>

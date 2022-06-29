@@ -59,7 +59,7 @@
 
         <div class="mt-3"></div>
 
-        <pre><code class="language-sql">SELECT * FROM 'users' WHERE (is_admin = true)</code></pre>
+        <pre><code class="language-sql">SELECT * FROM 'users' WHERE (id = "is_admin = true")</code></pre>
 
         <%= form_with url: :find_by_user_sanitized do |f| %>
           <%= f.hidden_field :id, value: "is_admin = true" %>

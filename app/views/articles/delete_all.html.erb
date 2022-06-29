@@ -33,7 +33,7 @@
 
         <div class="mt-3"></div>
 
-        <pre><code class="language-sql">DELETE * FROM "users" WHERE (id = <%= @user.id %>) OR 1=1--)</code></pre>
+        <pre><code class="language-sql">DELETE * FROM 'users' WHERE (id = <%= @user.id %>) OR 1=1--)</code></pre>
 
         <%= form_with url: :destroy_user do |f| %>
           <%= f.hidden_field :user_id, value: "#{@user.id}) OR 1=1--" %>
@@ -44,7 +44,7 @@
       <h5 class="text-success mt-5">DO</h5>
 
       <div class="do-dont-block">
-        <pre><code class="language-ruby">User.where(id: params[:user_id]").delete_all</code></pre>
+        <pre><code class="language-ruby">User.where(id: params[:user_id]).delete_all</code></pre>
 
         <pre><code class="language-sql">DELETE * FROM 'users' WHERE (id = <%= @user.id %>)</code></pre>
 
@@ -55,7 +55,7 @@
 
         <div class="mt-3">
 
-        <pre><code class="language-sql">DELETE * FROM "users" WHERE (id = <%= @user.id %>) OR 1=1--)</code></pre>
+        <pre><code class="language-sql">DELETE * FROM 'users' WHERE (id = <%= @user.id %>) OR 1=1--)</code></pre>
 
         <%= form_with url: :destroy_sanitized_user do |f| %>
           <%= f.hidden_field :user_id, value: "#{@user.id}) OR 1=1--" %>

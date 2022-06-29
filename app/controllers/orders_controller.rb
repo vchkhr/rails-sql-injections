@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
   end
 
   def joins_sanitized
-    order_search = Order.joins( ActiveRecord::Base.connection.quote_column_name( params[:table] ) ).where("total > 1000").all
     order_search = Order.joins("INNER JOIN users ON users.#{ActiveRecord::Base.connection.quote_column_name(params[:column])} = orders.user_id").where("total > 1000").all
     render turbo_stream: turbo_stream.replace(:orders, partial: "orders/orders", locals: { orders: order_search })
   end
